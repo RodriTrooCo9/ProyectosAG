@@ -1,0 +1,211 @@
+# FUENTE CANÓNICA. Editar aquí; generar todo con generar-diagramas.ps1.
+# Las cuadrículas sólo organizan paneles. Las flechas se enrutan dentro de grafos ELK.
+vars: {
+  d2-config: {
+    layout-engine: elk
+    theme-id: 0
+    pad: 45
+  }
+}
+direction: right
+grid-columns: 1
+grid-gap: 36
+style.fill: "#FFFFFF"
+
+classes: {
+  panel: {
+    style: {fill: "#FFFFFF"; stroke: "#777777"; stroke-width: 1; border-radius: 8; font-size: 24; bold: true}
+    label.near: top-left
+  }
+  node: {
+    width: 240
+    height: 170
+    icon.near: top-center
+    label.near: bottom-center
+    style: {fill: "#FFFFFF"; stroke: "#444444"; stroke-width: 1; border-radius: 6; font-size: 20; font-color: "#222222"; bold: false}
+  }
+  reference: {
+    width: 240
+    height: 170
+    icon.near: top-center
+    label.near: bottom-center
+    style: {fill: "#FFFFFF"; stroke: "#444444"; stroke-width: 1; stroke-dash: 4; border-radius: 6; font-size: 20; font-color: "#222222"; bold: false}
+  }
+  control: {
+    style: {stroke: "#666666"; stroke-width: 1; stroke-dash: 5; font-size: 17; font-color: "#333333"; italic: false}
+  }
+  data: {
+    style: {stroke: "#222222"; stroke-width: 2; font-size: 17; font-color: "#222222"; italic: false}
+  }
+  note: {
+    shape: text
+    style: {font-size: 18; font-color: "#444444"; bold: false}
+  }
+}
+**.style.fill: "#FFFFFF"
+**.style.font-color: "#222222"
+
+titulo: "ARQUITECTURA GITOPS · BORRAR-PRUEBA\nTrazabilidad de carpetas, recursos declarados y relaciones operativas" {
+  shape: text
+  style: {font-size: 32; bold: true}
+}
+alcance: "Referencia: completo / adas-prueba-02. Variantes: adas-prueba-03 y Crossplane (07).\nUna sola lámina: M1–M4 identifican las carpetas; los nombres repetidos representan el mismo recurso en distintas relaciones." {class: note}
+
+gitops: "01 · ORIGEN Y RECONCILIACIÓN GITOPS" {
+  direction: right
+  class: panel
+  repo: "Repositorio Git\nborrar-prueba/\nprojects/ en variante completo" {class: node; width: 320; icon: ./assets/icons/git.svg}
+  group: "app-group.yaml\nAgrupa los entornos" {class: node; icon: ./assets/icons/archivo.svg}
+  env: "<entorno>/\napp-environment.yaml" {class: node; icon: ./assets/icons/carpeta.svg}
+  argo: "Argo CD *\nReconcilia los manifiestos\nde los cuatro módulos" {class: reference; icon: ./assets/icons/argo.svg}
+  modules: "M1 infra/     M2 postgres/\nM3 databases/     M4 apps/\nDetalle de entradas y recursos abajo" {class: node; width: 420; height: 130; label.near: center-left}
+  repo -> group: contiene {class: control}
+  group -> env: referencia {class: control}
+  env -> argo: define aplicaciones {class: control}
+  argo -> modules: sincroniza {class: control}
+}
+
+inventario: "02 · CARPETAS → RECURSOS LISTADOS EN EL ESQUEMA COMPLETO" {
+  class: panel
+  grid-columns: 4
+  grid-gap: 35
+  infra: "M1 · infra/" {
+    class: panel
+    grid-columns: 1
+    grid-gap: 24
+    origen: "app-infra.yaml" {class: node; width: 490; height: 180; icon: ./assets/icons/archivo.svg}
+    recursos: "appproject\nclusterrolebinding\nclusterrolebindingauth\nserviceaccount\nsecretstore\nobjectstore\nexternal-secret" {class: node; width: 490; height: 235; label.near: center-left}
+    origen -> recursos: {class: control}
+  }
+  postgres: "M2 · postgres/" {
+    class: panel
+    grid-columns: 1
+    grid-gap: 24
+    origen: "app.yaml + Chart.yaml\ntemplates/ + values/\nPlantilla según variante (sección 07)" {class: node; width: 490; height: 180; icon: ./assets/icons/archivo.svg}
+    recursos: "postgres-cluster\nscheduled-backup\ndatabase-role\nexternal-secret\n\nMotor y respaldo de PostgreSQL\nOperador/API por confirmar" {class: node; width: 490; height: 235; label.near: center-left}
+    origen -> recursos: {class: control}
+  }
+  databases: "M3 · databases/" {
+    class: panel
+    grid-columns: 1
+    grid-gap: 24
+    origen: "app.yaml + Chart.yaml\ntemplates/postgreSQLDatabase.yaml\nvalues/postgres-database_db{,_2}.yaml" {class: node; width: 490; height: 180; icon: ./assets/icons/archivo.svg}
+    recursos: "Por cada values de base de datos:\nexternal-secret\ndatabase\ndatabase-role\ngrants-job-pg\n\nBases lógicas db / db_2" {class: node; width: 490; height: 235; label.near: center-left}
+    origen -> recursos: {class: control}
+  }
+  apps: "M4 · apps/" {
+    class: panel
+    grid-columns: 1
+    grid-gap: 24
+    origen: "app-set.yaml o app.yaml\nvalues/\nvalues-agetic-nestjs-base-backend.yaml" {class: node; width: 490; height: 180; icon: ./assets/icons/archivo.svg}
+    recursos: "Service\nDeployment → ReplicaSet * → Pods\nHorizontalPodAutoscaler\nApisixRoute\nexternalsecret-env\nexternalsecret-harbor\nServiceMonitor" {class: node; width: 490; height: 235; label.near: center-left}
+    origen -> recursos: {class: control}
+  }
+}
+
+ejecucion: "03 · APLICACIÓN Y DATOS — TRÁFICO Y CONTROL SON RELACIONES DIFERENTES" {
+  direction: right
+  class: panel
+  client: "Cliente\nFuera del entorno" {class: reference; icon: ./assets/icons/usuario.svg}
+  gateway: "APISIX Gateway *\nPunto de entrada HTTP" {class: reference; icon: ./assets/icons/red.svg}
+  route: "M4 · ApisixRoute\nConfiguración de rutas" {class: node; icon: ./assets/icons/k8s-ing.svg}
+  svc: "M4 · Service\nBackend NestJS" {class: node; icon: ./assets/icons/k8s-svc.svg}
+  pods: "M4 · Pods\nagetic-nestjs-base-backend" {class: node; width: 290; icon: ./assets/icons/k8s-pod.svg}
+  pg: "M2 · PostgreSQL\npostgres-cluster\nAloja db / db_2 (M3)" {class: node; icon: ./assets/icons/postgresql.svg}
+  hpa: "M4 · HPA\nAjusta réplicas deseadas" {class: node; icon: ./assets/icons/k8s-hpa.svg}
+  deploy: "M4 · Deployment\nPlantilla del backend" {class: node; icon: ./assets/icons/k8s-deploy.svg}
+  rs: "ReplicaSet *\nGestionado por Deployment" {class: reference; icon: ./assets/icons/k8s-rs.svg}
+  client -> gateway: HTTP(S) {class: data}
+  route -> gateway: configura vía controlador * {class: control}
+  gateway -> svc: enruta {class: data}
+  svc -> pods: selecciona endpoints {class: data}
+  pods -> pg: SQL · base configurada {class: data}
+  hpa -> deploy: escala {class: control}
+  deploy -> rs: administra {class: control}
+  rs -> pods: mantiene réplicas {class: control}
+}
+
+secretos: "04 · SECRETOS E IMÁGENES — REGISTRY Y PROVEEDOR DE SECRETOS SON SERVICIOS DISTINTOS" {
+  direction: right
+  class: panel
+  store: "M1 · SecretStore\nReferencia al proveedor" {class: node; icon: ./assets/icons/secretos.svg}
+  es: "M1–M4 · ExternalSecret\nenv, harbor, PostgreSQL y DB\nCada uno usa su secretStoreRef" {class: node; width: 355; icon: ./assets/icons/archivo.svg}
+  provider: "Proveedor de secretos *\nSegún spec.provider\nVault sólo si está configurado" {class: reference; width: 310; icon: ./assets/icons/secretos.svg}
+  eso: "External Secrets Operator *\nLee el proveedor y materializa\nlos Secrets de Kubernetes" {class: reference; width: 345; icon: ./assets/icons/control.svg}
+  env: "Secret de aplicación/DB *\nENV y credenciales\nDestino según manifiestos" {class: reference; width: 290; icon: ./assets/icons/k8s-secret.svg}
+  pull: "Secret de registry *\nimagePullSecrets\nCredenciales para Harbor" {class: reference; width: 270; icon: ./assets/icons/k8s-secret.svg}
+  workload: "Pods / Jobs / PostgreSQL\nConsumen su Secret\nsegún configuración" {class: node; width: 290; icon: ./assets/icons/k8s-pod.svg}
+  kubelet: "Kubelet / runtime *\nNodo que ejecuta el Pod" {class: reference; width: 280; icon: ./assets/icons/servidor.svg}
+  harbor: "Harbor / registry *\nAlmacén de imágenes" {class: reference; icon: ./assets/icons/harbor.png}
+  store -> eso: configura conexión {class: control}
+  es -> eso: declara sincronización {class: control}
+  eso -> provider: consulta secretos {class: data}
+  eso -> env: crea / actualiza {class: control}
+  eso -> pull: crea / actualiza {class: control}
+  env -> workload: referencia de Secret {class: control}
+  pull -> kubelet: autentica descarga {class: control}
+  kubelet -> harbor: solicita imagen {class: data}
+}
+
+operacion: "05 · PERSISTENCIA, RESPALDOS Y OBSERVABILIDAD" {
+  class: panel
+  grid-columns: 1
+  grid-gap: 30
+  persistencia: "M2 / M3 · Base de datos y respaldo" {
+    direction: right
+    class: panel
+    db: "M3 · database\ndb / db_2" {class: node; icon: ./assets/icons/postgresql.svg}
+    roles: "M3 · database-role\nRol por base de datos" {class: node; icon: ./assets/icons/secretos.svg}
+    grants: "M3 · grants-job-pg\nAplica permisos SQL" {class: node; icon: ./assets/icons/k8s-job.svg}
+    cluster: "M2 · postgres-cluster\nMotor PostgreSQL" {class: node; icon: ./assets/icons/postgresql.svg}
+    provision: "Controlador de PostgreSQL *\nCrossplane / operador según\napiVersion y kind" {class: reference; width: 330; icon: ./assets/icons/control.svg}
+    schedule: "M2 · scheduled-backup\nDefine la programación" {class: node; icon: ./assets/icons/archivo.svg}
+    backup: "Operador / proceso de backup *\nImplementación por confirmar" {class: reference; width: 320; icon: ./assets/icons/respaldo.svg}
+    object: "M1 · objectstore\nConfiguración del destino" {class: node; icon: ./assets/icons/archivo.svg}
+    storage: "Almacenamiento de objetos *\nEndpoint / bucket configurado" {class: reference; width: 310; icon: ./assets/icons/respaldo.svg}
+    roles -> grants: rol destinatario {class: control}
+    grants -> db: concede permisos {class: control}
+    db -> cluster: reside en {class: control}
+    provision -> cluster: reconcilia {class: control}
+    schedule -> backup: programa {class: control}
+    object -> backup: configura destino {class: control}
+    backup -> cluster: obtiene respaldo {class: data}
+    backup -> storage: escribe respaldo {class: data}
+  }
+  observabilidad: "M4 · Descubrimiento y métricas" {
+    direction: right
+    class: panel
+    sm: "M4 · ServiceMonitor\nSelector + endpoints" {class: node; icon: ./assets/icons/archivo.svg}
+    op: "Prometheus Operator *\nConfigura el monitoreo" {class: reference; width: 280; icon: ./assets/icons/control.svg}
+    prom: "Prometheus *\nEjecuta el scraping" {class: reference; icon: ./assets/icons/prometheus.svg}
+    svc: "M4 · Service\nDescubrimiento de endpoints" {class: node; width: 290; icon: ./assets/icons/k8s-svc.svg}
+    pods: "M4 · Pods\nEndpoint de métricas *" {class: node; icon: ./assets/icons/k8s-pod.svg}
+    sm -> op: declara monitoreo {class: control}
+    op -> prom: configura {class: control}
+    sm -> svc: selecciona Service {class: control}
+    prom -> pods: consulta métricas {class: data}
+    svc -> pods: identifica endpoints {class: control}
+  }
+}
+
+permisos: "06 · ALCANCE Y PERMISOS — RECURSOS DE M1" {
+  direction: right
+  class: panel
+  project: "AppProject\nRestricciones de Argo CD\nRepositorios / destinos / recursos" {class: node; width: 360; icon: ./assets/icons/carpeta.svg}
+  argo: "Aplicaciones de Argo CD *\nSujetas al AppProject\nsegún spec.project" {class: reference; width: 320; icon: ./assets/icons/argo.svg}
+  binding: "clusterrolebinding\nclusterrolebindingauth\nConcesiones RBAC" {class: node; width: 330; icon: ./assets/icons/k8s-crb.svg}
+  subject: "Sujetos de los bindings\nServiceAccount si figura\nen subjects" {class: reference; width: 320; icon: ./assets/icons/k8s-sa.svg}
+  project -> argo: limita {class: control}
+  binding -> subject: otorga permisos {class: control}
+}
+
+variantes: "07 · VARIANTES DEL ÁRBOL — NO SE MEZCLAN COMO UN MISMO DESPLIEGUE" {
+  class: panel
+  grid-columns: 3
+  grid-gap: 30
+  completo02: "COMPLETO · adas-prueba-02\napps/app-set.yaml + values del backend\npostgres/templates/PostgreSQL.yaml\npostgres/values/postgres-prueba.yaml\ndatabases/: db y db_2 detallados\n\nEl árbol muestra nombres de recursos -03:\nverificar fullnameOverride / release / entorno." {class: node; width: 700; height: 245; label.near: center-left}
+  completo03: "COMPLETO · adas-prueba-03\napps/app-set.yaml + values del backend\npostgres/templates/crossplane-postgresql.yaml\nvalues: op-postgres-prueba-01.yaml,\npostgres-prueba.yaml y prueba-02.yaml\ndatabases/ sin detalle en el árbol\n\npostgres-prueba.yaml aparece repetido:\nno se infieren instancias adicionales." {class: node; width: 700; height: 245; label.near: center-left}
+  crossplane: "CROSSPLANE · adas-prueba-02\napps/app.yaml\nvalues del backend + values-proy-prueba-01.yaml\npostgres/templates/PostgreSQL.yaml\npostgres/values/postgres.yaml\ndatabases/: db y db_2\n\nEl nombre de la variante no demuestra\nel kind ni el operador de cada recurso." {class: node; width: 700; height: 245; label.near: center-left}
+}
+
+leyenda: "LECTURA: línea continua = petición / transferencia de datos · línea discontinua = control / referencia.\nBorde discontinuo o * = componente de contexto necesario para explicar el flujo; instalación/configuración no comprobada.\nLas tarjetas de la sección 02 son inventario de origen → recursos, no un orden de ejecución. No se infieren sync waves, HA ni namespaces.\nCrossplane enumera archivos, no recursos renderizados. APIs, destinos y selectores se verifican con los YAML. Detalle en guia-diagrama-arquitectura.md." {class: note}

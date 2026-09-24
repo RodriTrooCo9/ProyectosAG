@@ -1,0 +1,118 @@
+Analiza la estructura de estas carpetas, cual seria su diagrama de arquitectura?
+apps - completo
+projects
+│   ├── borrar-prueba
+│   │   ├── adas-prueba-02
+│   │   │   ├── app-environment.yaml
+│   │   │   ├── apps
+│   │   │   │   ├── app-set.yaml  (helm chart base)
+│   │   │   │   └── values
+│   │   │   │       └── values-agetic-nestjs-base-backend.yaml
+                                ├──  service/agetic-nestjs-base-backend-adas-prueba-03-service
+                                ├──  deployment.apps/agetic-nestjs-base-backend-adas-prueba-03-deploy
+                                ├──   ├── pod/agetic-nestjs-base-backend-adas-prueba-03-deploy-6479d685fpdrd4
+                                ├──  horizontalpodautoscaler.autoscaling/agetic-nestjs-base-backend-adas-prueba-03-hpa
+                                ├──  apisixroute
+                                ├──  externalsecret-env
+                                ├──  externalsecret-harbor
+                                └── ServiceMonitor
+│   │   │   ├── databases
+│   │   │   │   ├── app.yaml
+│   │   │   │   ├── Chart.yaml
+│   │   │   │   ├── templates
+│   │   │   │   │   └── postgreSQLDatabase.yaml
+│   │   │   │   └── values
+│   │   │   │       ├── postgres-database_db_2.yaml
+                            ├── external-secret
+                            ├── database
+                            ├── database-role
+                            └── grants-job-pg
+│   │   │   │       └── postgres-database_db.yaml
+                            ├── external-secret
+                            ├── database
+                            ├── database-role
+                            └── grants-job-pg
+│   │   │   ├── infra
+│   │   │   │   └── app-infra.yaml (genera:)
+                      ├──  appproject
+                      ├──  clusterrolebinding
+                      ├──  clusterrolebindingauth
+                      ├──  objectstore
+                      ├──  secretstore
+                      ├──  serviceaccount
+                      └──  external-secret
+│   │   │   └── postgres
+│   │   │       ├── app.yaml
+│   │   │       ├── Chart.yaml
+│   │   │       ├── templates
+│   │   │       │   └── PostgreSQL.yaml
+│   │   │       └── values
+│   │   │           └── postgres-prueba.yaml
+                            ├──  postgres-cluster
+                            ├──  scheduled-backup
+                            ├──  database-role
+                            └──  external-secret
+│   │   ├── adas-prueba-03
+│   │   │   ├── app-environment.yaml
+│   │   │   ├── apps
+│   │   │   │   ├── app-set.yaml
+│   │   │   │   └── values
+│   │   │   │       └── values-agetic-nestjs-base-backend.yaml
+                                ├──  service/agetic-nestjs-base-backend-adas-prueba-03-service
+                                ├──  deployment.apps/agetic-nestjs-base-backend-adas-prueba-03-deploy
+                                ├──   ├── pod/agetic-nestjs-base-backend-adas-prueba-03-deploy-6479d685fpdrd4
+                                ├──  horizontalpodautoscaler.autoscaling/agetic-nestjs-base-backend-adas-prueba-03-hpa
+                                ├──  apisixroute
+                                ├──  externalsecret-env
+                                ├──  externalsecret-harbor
+                                └── ServiceMonitor
+│   │   │   ├── databases
+│   │   │   ├── infra
+│   │   │   │   └── app-infra.yaml
+│   │   │   └── postgres
+│   │   │       ├── app.yaml
+│   │   │       ├── Chart.yaml
+│   │   │       ├── templates
+│   │   │       │   └── crossplane-postgresql.yaml
+│   │   │       └── values
+│   │   │           ├── op-postgres-prueba-01.yaml
+│   │   │           └── postgres-prueba.yaml
+                            ├──  postgres-cluster
+                            ├──  scheduled-backup
+                            ├──  database-role
+                            └──  external-secret
+│   │   │           └── prueba-02.yaml
+│   │   │           └── postgres-prueba.yaml
+                            ├──  postgres-cluster
+                            ├──  scheduled-backup
+                            ├──  database-role
+                            └──  external-secret
+│   │   └── app-group.yaml
+
+apps - cossplane
+├── borrar-prueba
+│   │   ├── adas-prueba-02
+│   │   │   ├── app-environment.yaml
+│   │   │   ├── apps
+│   │   │   │   ├── app.yaml
+│   │   │   │   └── values
+│   │   │   │       ├── values-agetic-nestjs-base-backend.yaml
+│   │   │   │       └── values-proy-prueba-01.yaml
+│   │   │   ├── databases
+│   │   │   │   ├── app.yaml
+│   │   │   │   ├── Chart.yaml
+│   │   │   │   ├── templates
+│   │   │   │   │   └── postgreSQLDatabase.yaml
+│   │   │   │   └── values
+│   │   │   │       ├── postgres-database_db_2.yaml
+│   │   │   │       └── postgres-database_db.yaml
+│   │   │   ├── infra
+│   │   │   │   └── app-infra.yaml
+│   │   │   └── postgres
+│   │   │       ├── app.yaml
+│   │   │       ├── Chart.yaml
+│   │   │       ├── templates
+│   │   │       │   └── PostgreSQL.yaml
+│   │   │       └── values
+│   │   │           └── postgres.yaml
+│   │   └── app-group.yaml

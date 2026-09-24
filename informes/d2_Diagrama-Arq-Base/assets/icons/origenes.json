@@ -1,0 +1,157 @@
+[
+  {
+    "archivo": "git.svg",
+    "origen": "https://icons.d2lang.com/dev/git.svg",
+    "sha256": "3e788624142ff9cfcafccfcd3fc852a0ed55f6716edff3ed323a92ee831c2419"
+  },
+  {
+    "archivo": "postgresql.svg",
+    "origen": "https://icons.d2lang.com/dev/postgresql.svg",
+    "sha256": "b629cb7e0251e2c22b5b35182ff26f1e5cc620d036f873a4fddd30a569dd461b"
+  },
+  {
+    "archivo": "archivo.svg",
+    "origen": "https://icons.d2lang.com/essentials/257-file.svg",
+    "sha256": "b983ff6414eb0704cfce83959b710785b156548eab38486c3d400c9d4d00bad8",
+    "sha256_origen": "993b13e4604f3341ccc5f90a057c28c1cd68bc6da2984b5f549a3d95f50a8420",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "carpeta.svg",
+    "origen": "https://icons.d2lang.com/essentials/245-folder.svg",
+    "sha256": "e1597ed8752fede0df47f5765572b5257b9b370ded7ebe23f38b534e47a5a4bb",
+    "sha256_origen": "2defeefbf8dc5951f5dfe8a8becba7d1c724af3c23ed2055b2aed6497230172d",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "servidor.svg",
+    "origen": "https://icons.d2lang.com/essentials/112-server.svg",
+    "sha256": "95297ac44c2458000acebe73824d48baeda62fb1248a5242aabab2bd855575a6",
+    "sha256_origen": "4ec0bb3424b7ed04eb9830b8b8e6ac6d5b7b61495230ee2242ccc3527fe63809",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "red.svg",
+    "origen": "https://icons.d2lang.com/essentials/092-network.svg",
+    "sha256": "7986700f100f7fca502a8d8e29cb67116d37e0367ed9f28cddafc9ecfd68af7b",
+    "sha256_origen": "bb7b5ae46b6316300442c97dcfb970b750ce9d24e2eae1b4faf4904f2e2e3e17",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "secretos.svg",
+    "origen": "https://icons.d2lang.com/essentials/216-key.svg",
+    "sha256": "047e55dd2202fbc7a5c98df7913252ea4b6b197163156adc4792bf41ad62062e",
+    "sha256_origen": "481ecd84be095499a5d3e97146785d20e4f5ef35d6b7b2688d52d05f040fe8c7",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "usuario.svg",
+    "origen": "https://icons.d2lang.com/essentials/365-user.svg",
+    "sha256": "f6f0aebac7c987eafb4c0ff1f0e03dc5bcd8307446be3820ed0f6ca1fd57b3c5",
+    "sha256_origen": "cedaff00d3d05ebd9e65b047faa6d18b370c14a9e097f935106dc632ccb863b8",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "respaldo.svg",
+    "origen": "https://icons.d2lang.com/essentials/304-archive.svg",
+    "sha256": "a029050b7e0e5834d65b409fd8a22f5cef4953c95083aceb35175bd739aafc7a",
+    "sha256_origen": "3e745b08d2ab4888746a13fe7c17757bf9282a25317e25691c49608346375c6c",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "control.svg",
+    "origen": "https://icons.d2lang.com/essentials/204-settings.svg",
+    "sha256": "8fb6c691010a34e5c72795783a9feb95467a5e38e1e0f84e4457cafd1bfd99be",
+    "sha256_origen": "fc0f8c5624ca99ee62b39efc2c13084745979a997c943ff05981983e19169970",
+    "adaptacion": "Finales de linea locales CRLF; contenido SVG conservado."
+  },
+  {
+    "archivo": "k8s-pod.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/pod.svg",
+    "sha256": "d77731170484ab135c34355de2b20a1ef8b3be549947aa0df3f63db06c8ec39d",
+    "sha256_origen": "3356f7ca970f811da2b1aa34a0f13e846255378727809ab6629837a842db0a2d",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-svc.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/svc.svg",
+    "sha256": "9056f06ad71a447c7be0ec43d87742b9370802f274d188acd0e66764fc1336e9",
+    "sha256_origen": "a86fad881253c4d7abbe7413c0efbca2e7dde7e54a55774f79349494bd823990",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-deploy.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/deploy.svg",
+    "sha256": "2381285a55fdf03f40a58c7e25b984b714c2e39f764f60809c165d265fc12708",
+    "sha256_origen": "d96f6e93a0f57ca9583b2120e3ddb4453afb5a29aa6d8c1360e8eb8e458489f7",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-rs.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/rs.svg",
+    "sha256": "518b097a56be1048e964742c76145361f86e9391efb83cee24f93a5717d6e647",
+    "sha256_origen": "234adcccb525efccc79dd996bdc18d73b5ac57c74beb8ee8549726f6b2beb5a7",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-hpa.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/hpa.svg",
+    "sha256": "d6dc19f759ee36f65f12e097fc36dd77d3e4e6b3c648d7a90fd5741ee4bab48b",
+    "sha256_origen": "7b92a11ab6050825927bc91bf654499a02e8f8488b059d2578ab22037900fbed",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-secret.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/secret.svg",
+    "sha256": "5b535c67c8400f68655e3c7ec874e6d0c541e13613a5ee178b3596bbb52b8e07",
+    "sha256_origen": "144fb9972d456ef172fcebbe6a6d7d4921254c6586b0381962c9add0b34468c2",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-sa.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/sa.svg",
+    "sha256": "3abb081bc1abe9c1d85c703d82a5160df7aa36c95643cdf81f36c485efa03d91",
+    "sha256_origen": "fd113e685c6842c074f8916cdd2424241fcaa64dabddce82f9ad60f9b1d93285",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-job.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/job.svg",
+    "sha256": "4e8de9220b09e194edf1aefbaae25debe2e03f5f8fb523e61296d0efb895ef2a",
+    "sha256_origen": "1f0f273f4271b2a5b22c1422d82187579f548619c8c030f9e2226bccfb3ce67f",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-ing.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/ing.svg",
+    "sha256": "67268497210e829f38a379a3490eb106a4af4241c5ef2263dd2835b5154e8c58",
+    "sha256_origen": "66ac75442eff83ef51a8d1ef01edd858cc621b0f43ff60e2170f1d10c4d49813",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "k8s-crb.svg",
+    "origen": "https://raw.githubusercontent.com/kubernetes/community/master/icons/svg/resources/unlabeled/crb.svg",
+    "sha256": "a7e47e5f7913696fefe7eea9f1351029c21f0ae8f96c7729754cd7c7d5522b83",
+    "sha256_origen": "43c8ee863fc6d3a690fce223f6e173bed3f988f147370d65e0d15b1c376aafd4",
+    "adaptacion": "Retirados metadatos de editor, title/desc y estilos tipograficos de paths para exportacion PNG en D2; geometria y pintura conservadas."
+  },
+  {
+    "archivo": "argo.svg",
+    "origen": "https://raw.githubusercontent.com/cncf/artwork/master/projects/argo/icon/color/argo-icon-color.svg",
+    "sha256_origen": "e926e477a7912364ea2f582f9cb08b04c3adf92a7b67c39693095960ed50b46a",
+    "sha256": "efe72f229e2e085fea98f8307ae5b77b8328adcdf557d7d2ef256b86cf6c4394",
+    "adaptacion": "Metadatos title/desc retirados para D2 PNG; geometria original."
+  },
+  {
+    "archivo": "prometheus.svg",
+    "origen": "https://raw.githubusercontent.com/cncf/artwork/master/projects/prometheus/icon/color/prometheus-icon-color.svg",
+    "sha256_origen": "a96d48cc7f1c91de940dacbf30581850fd2c0ed4afaf1b0b94fb86eb1d0aef6e",
+    "sha256": "b37e2c0ad525ec85434097e8fd20bddbd19b75313cd48368fe4eef5edf660f6b",
+    "adaptacion": "Metadatos title/desc retirados para D2 PNG; geometria original."
+  },
+  {
+    "archivo": "harbor.png",
+    "origen": "https://raw.githubusercontent.com/cncf/artwork/master/projects/harbor/icon/color/harbor-icon-color.png",
+    "sha256": "5aaae8050f2f64caf87036000047ed1d121f072276befa0137457a9a7bfeb683"
+  }
+]
